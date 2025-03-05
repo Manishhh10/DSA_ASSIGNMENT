@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 4. Each task (CrawlTask) fetches a URL, extracts links, and submits new tasks for unvisited URLs.
  * 5. Gracefully shutdown the executor when all URLs are processed.
  */
-public class Question_5_b {
+public class Question_6_b {
 
     private final ExecutorService executor;
     private final ConcurrentLinkedQueue<String> urlQueue = new ConcurrentLinkedQueue<>();
@@ -30,7 +30,7 @@ public class Question_5_b {
      * 
      * @param maxThreads Maximum number of concurrent threads.
      */
-    public Question_5_b(int maxThreads) {
+    public Question_6_b(int maxThreads) {
         executor = Executors.newFixedThreadPool(maxThreads);
     }
 
@@ -128,7 +128,7 @@ public class Question_5_b {
     // Test Case
     public static void main(String[] args) throws InterruptedException {
         List<String> seedUrls = Arrays.asList("http://example.com", "http://example.org");
-        Question_5_b crawler = new Question_5_b(4);
+        Question_6_b crawler = new Question_6_b(4);
         crawler.startCrawling(seedUrls);
         crawler.awaitTermination();
         System.out.println("Crawled URLs: " + crawler.getCrawledData().size());

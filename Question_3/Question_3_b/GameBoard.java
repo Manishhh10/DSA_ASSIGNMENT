@@ -3,14 +3,32 @@ package Question_3.Question_3_b;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class represents the game board for a Tetris-like game.
+ * It extends JPanel and handles rendering the game grid, blocks,
+ * current block, and the preview of the next block.
+ * The paintComponent method is overridden to draw game elements.
+ */
 public class GameBoard extends JPanel {
-    private final TetrisGame game;
+    private final TetrisGame game; // Reference to the main game logic
 
+    /**
+     * Constructor initializes the game board with a preferred size.
+     * 
+     * @param game The TetrisGame instance that controls game logic
+     */
     public GameBoard(TetrisGame game) {
         this.game = game;
         setPreferredSize(new Dimension(450, 600));
     }
 
+    /**
+     * Overrides paintComponent to render the game elements.
+     * Calls helper methods to draw the grid, blocks, current block,
+     * and next block preview.
+     * 
+     * @param g Graphics object used for drawing
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -20,6 +38,11 @@ public class GameBoard extends JPanel {
         drawPreview(g);
     }
 
+    /**
+     * Draws the grid lines on the game board.
+     * 
+     * @param g Graphics object used for drawing
+     */
     private void drawGrid(Graphics g) {
         g.setColor(Color.DARK_GRAY);
         for (int x = 0; x < TetrisGame.WIDTH; x++) {
@@ -29,6 +52,12 @@ public class GameBoard extends JPanel {
         }
     }
 
+    /**
+     * Draws the blocks that have been placed on the game board.
+     * Retrieves grid information from the game instance and colors the blocks accordingly.
+     * 
+     * @param g Graphics object used for drawing
+     */
     private void drawBlocks(Graphics g) {
         boolean[][] grid = game.getGrid();
         Color[][] colors = game.getColors();
@@ -42,6 +71,11 @@ public class GameBoard extends JPanel {
         }
     }
 
+    /**
+     * Draws the currently active block on the board.
+     * 
+     * @param g Graphics object used for drawing
+     */
     private void drawCurrentBlock(Graphics g) {
         Block current = game.getCurrentBlock();
         if (current != null) {
@@ -56,6 +90,11 @@ public class GameBoard extends JPanel {
         }
     }
 
+    /**
+     * Draws the preview of the next block in a small preview box.
+     * 
+     * @param g Graphics object used for drawing
+     */
     private void drawPreview(Graphics g) {
         int previewX = 330;
         int previewY = 50;
@@ -82,4 +121,12 @@ public class GameBoard extends JPanel {
             }
         }
     }
+
+    /**
+     * Summary:
+     * This class handles rendering the game board, including the grid, placed blocks,
+     * the current moving block, and a preview of the next block. The algorithm ensures
+     * the correct display of game elements and updates them dynamically as the game progresses.
+     * The rendering works as expected, visually representing the game state.
+     */
 }

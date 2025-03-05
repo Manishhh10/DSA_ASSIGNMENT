@@ -143,7 +143,7 @@ class ThreadController {
 }
 
 // Test Class
-public class Question_5_a {
+public class Question_6_a {
     public static void main(String[] args) {
         int n = 5;
         NumberPrinter printer = new NumberPrinter();
